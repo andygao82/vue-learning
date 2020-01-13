@@ -1,0 +1,40 @@
+<html>
+<body>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+
+</style>
+<div id="app">
+	<ul>
+		<li v-for="(p, index) in persons" :key="index">
+			{{index}}---{{p.name}}---{{p.age}}---<button @click="deletePerson(index)">Delete</button>---<button @click="updatePerson(index, {name: 'Kate', age: 20})">Update</button>
+		</li>
+	</ul>
+
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data:{
+            persons:[
+                {name: 'Tom', age: 18},
+                {name: 'Jack', age: 17},
+                {name: 'Bob', age: 16},
+                {name: 'Rose', age: 15}
+            ]
+        },
+        methods:{
+			deletePerson(index){
+			    this.persons.splice(index, 1)
+			},
+            updatePerson(index, newPerson){
+                this.persons.splice(index, 1, newPerson)
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

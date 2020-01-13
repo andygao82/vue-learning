@@ -1,0 +1,49 @@
+<html>
+<body>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <style>
+        .aClass{
+            color: brown;
+        }
+        .bClass{
+            color: blue;
+        }
+        .cClass{
+            font-size: 20px;
+        }
+    </style>
+    <div id="app">
+        <p class="cClass" :class="a">wocao</p>
+        <p :class="{aClass: isA, bClass: isB}">wo cao</p>
+        <p :class="['aClass', 'cClass']">wo ciao</p>
+        <button @click="update">Update</button>
+
+        <p :style="{color: activeColor, fontSize: fontSize + 'px'}">wo qu</p>
+
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data:{
+                a: 'aClass',
+                isA: true,
+                isB: false,
+                activeColor: 'red',
+                fontSize: '30'
+            },
+            methods:{
+                update(){
+                    this.a = 'bClass'
+                    this.isA = false
+                    this.isB = true
+                    this.activeColor = 'yellow'
+                    this.fontSize = 40
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
