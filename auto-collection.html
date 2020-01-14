@@ -1,0 +1,76 @@
+<html>
+<body>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+
+</style>
+<div id="app">
+    <form action="#" @submit.prevent="handleSubmit()">
+        <label for="username">Username</label>
+        <input type="text" name="username" v-model="username">
+        <br>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" v-model="password">
+        <br>
+
+        <span>Male</span>
+        <input type="radio"  value="man" v-model="gender">
+        <br>
+        <span>Female</span>
+        <input type="radio" value="woman" v-model="gender">
+        <br>
+
+        <label for="basketball">Basketball</label>
+        <input type="checkbox" name="basketball" value="lanqiu" v-model="likes">
+        <br>
+        <label for="football">Football</label>
+        <input type="checkbox" name="football" value="zuqiu" v-model="likes">
+        <br>
+        <label for="baseball">Baseball</label>
+        <input type="checkbox" name="baseball"  value="bangqiu" v-model="likes">
+        <br>
+        <label for="hockey">Hockey</label>
+        <input type="checkbox" name=hockey" value="bingqiu" v-model="likes">
+        <br>
+        <span>city</span>
+        <select name="city" v-model="cityId">
+            <option value="">Please Select</option>
+            <option :value="city.id" v-for="(city, index) in allCities" :key="index">{{city.name}}</option>
+        </select>
+        <br>
+        <textarea name="intro" cols="30" rows="10" v-model="desc"></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data:{
+            username:'',
+            password:'',
+            gender:'woman',  // default value
+            likes: ['zuqiu'],
+            allCities: [{id:1, name:'SY'}, {id:2, name:'MEL'}],
+            cityId: 2,
+            desc: ''
+        },
+        methods:{
+            handleSubmit(){
+                console.log(this.username)
+                console.log(this.password)
+                console.log(this.gender)
+                console.log(this.likes)
+                console.log(this.cityId)
+                console.log(this.desc)
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

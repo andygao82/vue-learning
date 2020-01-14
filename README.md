@@ -19,3 +19,11 @@ v-show // 反复频繁切换，较好. 只是隐藏，不是删除
 v-for
 v-for="(p, index) in persons" :key="index"
 v-for="(value, key) in persons[1]" :key="key"
+
+    <button @click="test1">test1</button>
+    <button @click="test2('msg')">test2</button>
+    <button @click="test3">test3</button>
+    <button @click="test4(123, $event)">test4</button> //event and number
+    
+@click.stop // stop 冒泡 ==  event.stopPropagation()
+@click.prevent  //  == event.preventDefault()

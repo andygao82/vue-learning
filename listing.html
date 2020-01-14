@@ -7,17 +7,22 @@
 
 </style>
 <div id="app">
+	<input type="text" v-model="searchName">
 	<ul>
-		<li v-for="(p, index) in persons" :key="index">
+		<li v-for="(p, index) in filterPersons" :key="index">
 			{{index}}---{{p.name}}---{{p.age}}---<button @click="deletePerson(index)">Delete</button>---<button @click="updatePerson(index, {name: 'Kate', age: 20})">Update</button>
 		</li>
 	</ul>
-
+	<button @click="setOrderType(1)">ASC</button>
+	<button @click="setOrderType(2)">DESC</button>
+	<button @click="setOrderType(0)">DEFAULT</button>
 </div>
 <script>
     const vm = new Vue({
         el: '#app',
         data:{
+        	searchName: "",
+			orderType: 0,  //default order, 1 ASC, 2 DESC
             persons:[
                 {name: 'Tom', age: 18},
                 {name: 'Jack', age: 17},
@@ -31,8 +36,31 @@
 			},
             updatePerson(index, newPerson){
                 this.persons.splice(index, 1, newPerson)
-            }
-        }
+            },
+			setOrderType(orderType){
+				this.orderType = orderType
+			}
+        },
+		computed:{
+        	filterPersons(){
+        		//collect data
+        		const {searchName, persons, orderType} = this
+				let fPersons
+				// filter persons
+				fPersons = persons.filter(p => p.name.indexOf(searchName) >= 0)
+				//default order, 1 ASC, 2 DESC
+				if(orderType !==0){
+					fPersons.sort(function (p1, p2) {
+						if(orderType ===2){
+							return p2.age-p1.age
+						}else{
+							return p1.age-p2.age
+						}
+					})
+				}
+        		return fPersons
+			}
+		}
 
     })
 </script>
