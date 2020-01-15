@@ -1,0 +1,33 @@
+<html>
+<body>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/moment.js"></script>
+</head>
+<style>
+
+</style>
+<div id="app">
+    <p>{{date}}</p>
+    <p>{{date | dateStr}}</p>
+    <p>{{date | dateStr('YYYY-MM-DD')}}</p>
+    <p>{{date | dateStr('HH:mm:ss')}}</p>
+</div>
+<script>
+    Vue.filter('dateStr', function (value, format) {
+        return moment(value).format(format || 'YYYY-MM-DD HH:mm:ss')
+    })
+
+    const vm = new Vue({
+        el: '#app',
+        data:{
+            date: new Date()
+        },
+        methods:{
+
+        }
+
+    })
+</script>
+</body>
+</html>

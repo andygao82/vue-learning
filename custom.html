@@ -1,0 +1,55 @@
+<html>
+<body>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+
+</style>
+<div id="app">
+    <p v-upper-text="msg"></p>
+    <p v-lower-text="msg"></p>
+</div>
+
+<div id="vm">
+    <p v-upper-text="msg"></p>
+    <p v-lower-text="msg"></p>
+</div>
+<script>
+    // define global directive
+    // el: directive's tag
+    // binding: directive related information
+    Vue.directive('upperText', function (el, binding) {
+        //console.log(el, binding)
+        el.textContent = binding.value.toUpperCase();
+    })
+    const app = new Vue({
+        el: '#app',
+        data:{
+            msg: 'NBA I love this game!'
+        },
+        // define local directive
+        directives:{
+            lowerText: function (el, binding) {
+                el.textContent = binding.value.toLowerCase();
+            }
+        }
+    })
+</script>
+
+<script>
+    const vm = new Vue({
+        el: '#vm',
+        data:{
+            msg: 'Just do IT!'
+        },
+        directives:{
+            lowerText: function (el, binding) {
+                el.textContent = binding.value.toLowerCase();
+            }
+        }
+
+    })
+</script>
+</body>
+</html>
