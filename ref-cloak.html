@@ -1,0 +1,34 @@
+<html>
+<body>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+    [v-cloak]{
+        display: none;
+    }
+</style>
+<div id="app">
+    <p ref="content">wo qu</p>
+    <button @click="hint">hint</button>
+
+    <p v-cloak>{{msg}}</p>
+</div>
+<script>
+    alert('wo le')
+    const vm = new Vue({
+        el: '#app',
+        data:{
+            msg: 'wo cao'
+        },
+        methods:{
+            hint(){
+                pTag = this.$refs.content.textContent
+                console.log(pTag)
+            }
+        }
+
+    })
+</script>
+</body>
+</html>
