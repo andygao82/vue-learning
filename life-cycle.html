@@ -1,0 +1,55 @@
+<html>
+<body>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+
+</style>
+<div id="app">
+    <button @click="destroyVM">Destroy VUE</button>
+    <p v-show="isShow">Wo cao !!!</p>
+</div>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data:{
+            isShow: false
+        },
+        // 初始化阶段
+        beforeCreate() {
+            console.log('beforeCreate()')
+        },
+        created() {
+            console.log('created()')
+        },
+        beforeMount() {
+            console.log('beforeMount()')
+        },
+        methods: {
+            destroyVM(){
+                this.$destroy()
+            }
+        },
+        // 更新阶段
+        beforeUpdate() {
+            console.log('beforeUpdate()')
+        },
+        updated() {
+            console.log('updated()')
+        },
+        // 毁灭阶段
+        beforeDestroy() {
+            clearInterval(this.interval)
+        },
+        mounted(){ // after initialisation then setup
+            this.interval = setInterval(() => {
+                console.log(1)
+                this.isShow = !this.isShow
+            },1000)
+        }
+    })
+
+</script>
+</body>
+</html>
