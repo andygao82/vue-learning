@@ -50,3 +50,16 @@
      cd vue_demo_name
      npm install
      npm run dev
+     
+     引入component
+     1. <script> 里面 import HelloWorld form './components/HelloWorld.vue'
+     2. export default{
+        components: {
+            HelloWorld
+        }
+     }
+     3. <template>里面 <HelloWorld />
+     
+     入口main.js: 创建Vue实例
+     
+     
