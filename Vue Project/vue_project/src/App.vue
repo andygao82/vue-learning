@@ -3,8 +3,18 @@
     <img src="./assets/logo.png">
     <div class="container">
       <div class="row">
-        <Add :addComment="comments"/>
-        <List :comments="comments" />
+        <ul v-for="category in categories" :key="category.id">
+          <li>
+            {{category.title}}
+            <ul v-for="item in items" :key="item.id"> -0
+              <li>{{item.name}}</li>
+              <button @click="updatename(item, item.id, item.name)">update</button>
+
+            </ul>
+
+          </li>
+
+        </ul>
       </div>
     </div>
 
@@ -18,39 +28,68 @@
 export default {
   name: 'App',
   props:{
-    addComment:{ //指定属性名，属性类型，requrie
-      type: Function,
-      required: true
-    }
+
   },
   data() {
     return{
-      comments:[
+      items:[
         {
+          id: '0',
           name: 'bob',
-          content: 'Vue is good'
+          content: 'Vue is good',
+          catid: '0'
         },
         {
+          id: '1',
           name: 'cat',
-          content: 'Vue is not good'
+          content: 'Vue is not good',
+          catid: '1'
         },
         {
+          id: '2',
           name: 'rat',
-          content: 'Vue is not bad'
+          content: 'Vue is not bad',
+          catid: '0'
+        },
+        {
+          id: '3',
+          name: 'mice',
+          content: 'Vue is not worse',
+          catid: '1'
         }
-      ]
+      ],
+      categories:[
+        {
+          id: '0',
+          title: 'Category 0 zero'
+        },
+        {
+          id: '1',
+          title: 'Category 1 one'
+        }
+      ],
+      isShow: false
     }
   },
   methods:{
-    addComment(comment){
-       this.comments.unshift(comment)
+    updatename(item, itemid, itemname){
+       console.log(item)
+      // console.log(itemid)
+      // console.log(itemname)
+      // let index = item.indexOf(itemname)
+      // console.log(index)
+      this.$set(item, 'name', 'wocao')
     }
+
   },
   components: {
-    Add,
-    List
+
+  },
+  computed:{
+
   }
 }
+
 </script>
 
 <style>
