@@ -46,7 +46,7 @@
      })
      
      npm install -g vue-cli
-     vue init webpak vue_demo_name
+     vue init webpack vue_demo_name
      cd vue_demo_name
      npm install
      npm run dev
@@ -62,4 +62,6 @@
      
      入口main.js: 创建Vue实例
      
+     components 通信
+     -> props 接受属性
      

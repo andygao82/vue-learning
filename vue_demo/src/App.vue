@@ -1,17 +1,34 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png" alt="logo">
-    <HelloWorld/>
+  <div>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1>WO Cao, Wu qing</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <Add/>
+          <List/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import Add from './components/Add'
+import List from './components/List'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Add,
+    List
   }
 }
 </script>

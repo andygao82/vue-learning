@@ -17,7 +17,8 @@
         </ul>
       </div>
     </div>
-
+  <p>{{da}}</p>
+    <input type="text" v-model="da">
   </div>
 </template>
 
@@ -32,6 +33,7 @@ export default {
   },
   data() {
     return{
+      da: 'dagd',
       items:[
         {
           id: '0',
